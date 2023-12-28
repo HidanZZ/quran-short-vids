@@ -4,14 +4,22 @@ services:
     build:
       context: ./python-utils
       dockerfile: Dockerfile
+    volumes:
+      - shared-data:/data
+    ports:
+      - "5000:5000"
     # Volumes and other configurations as needed
 
   node-service:
     build:
       context: ./backend
       dockerfile: Dockerfile
+    volumes:
+      - shared-data:/data
     depends_on:
       - python-service
+    ports:
+      - "8080:8080"
     # Volumes, ports, and other configurations as needed
 
   nextjs-service:
@@ -23,3 +31,8 @@ services:
     ports:
       - "3000:3000"
     # Volumes and other configurations as needed
+  
+volumes:
+  shared-data:
+
+

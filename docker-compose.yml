@@ -1,0 +1,25 @@
+version: '3'
+services:
+  python-service:
+    build:
+      context: ./python-utils
+      dockerfile: Dockerfile
+    # Volumes and other configurations as needed
+
+  node-service:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    depends_on:
+      - python-service
+    # Volumes, ports, and other configurations as needed
+
+  nextjs-service:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    depends_on:
+      - node-service
+    ports:
+      - "3000:3000"
+    # Volumes and other configurations as needed

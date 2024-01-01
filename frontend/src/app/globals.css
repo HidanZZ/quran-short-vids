@@ -1,3 +1,14 @@
+@font-face {
+  font-family: "quran1";
+  src: url("../../public/fonts/quran_font.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "quran2";
+  src: url("../../public/fonts/quran_font2.ttf") format("truetype");
+}
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

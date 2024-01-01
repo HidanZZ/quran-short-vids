@@ -1,0 +1,1 @@
+export { QuranApiService } from "./quranapi";

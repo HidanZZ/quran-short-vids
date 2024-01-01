@@ -4,6 +4,7 @@ frontend/out/
 frontend/.env 
 backend/node_modules/
 backend/.env
+backend/public/
 backend/dist/
 python-utils/models/*
 python-utils/__pycache__/*

@@ -12,6 +12,7 @@ import {
 import UploadAudio from "./UploadAudio";
 import QuranForm from "./QuranForm";
 import QuranPreview from "./QuranPreview";
+import { useFormStore, useFormWizardStore } from "@/store/formwizard";
 const Separator = () => (
 	<div className='relative mx-4'>
 		<div className='absolute inset-0 flex items-center justify-center'>
@@ -23,6 +24,15 @@ const Separator = () => (
 	</div>
 );
 const QuranSelector = () => {
+	const { submitForm } = useFormStore();
+	const { setState, incrementStep } = useFormWizardStore();
+	const onSubmit = () => {
+		if (submitForm)
+			submitForm((data) => {
+				setState(data);
+				incrementStep();
+			})();
+	};
 	return (
 		<Card>
 			<CardHeader>
@@ -32,16 +42,16 @@ const QuranSelector = () => {
 			<CardContent className='flex flex-col gap-4 justify-center items-center'>
 				<div className='flex flex-row'>
 					<QuranForm />
-					<Separator />
-					<UploadAudio />
+					{/* <Separator />
+					<UploadAudio /> */}
 				</div>
-				<div className='w-[500px] p-4 select-none'>
+				{/* <div className='w-[500px] p-4 select-none'>
 					<QuranPreview />
-				</div>
+				</div> */}
 			</CardContent>
 			<CardFooter className='flex justify-end'>
 				{/* <Button variant='outline'>Cancel</Button> */}
-				<Button>Next</Button>
+				<Button onClick={onSubmit}>Next</Button>
 			</CardFooter>
 		</Card>
 	);

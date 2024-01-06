@@ -24,10 +24,18 @@ type ComboBoxProps = {
 	label: string;
 	width?: number;
 	onSelect: (value: string) => void;
+	value: string;
+	setValue: (value: string) => void;
 };
-const ComboBox = ({ options, label, width, onSelect }: ComboBoxProps) => {
+const ComboBox = ({
+	options,
+	label,
+	width,
+	onSelect,
+	value,
+	setValue,
+}: ComboBoxProps) => {
 	const [open, setOpen] = React.useState(false);
-	const [value, setValue] = React.useState("");
 
 	return (
 		<Popover open={open} onOpenChange={setOpen}>
